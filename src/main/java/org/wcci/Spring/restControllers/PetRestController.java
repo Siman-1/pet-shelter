@@ -63,7 +63,7 @@ public class PetRestController {
     // curl -s http://localhost:8080/api/messages/emails
     @GetMapping("/api/messages/emails")
     public CollectionModel<String> getAllEmails() {
-        List<String> emails = this.PetService.messageStream()
+        List<String> emails = this.PetService.petStream()
                 .map(Message::getEmail)
                 .collect(Collectors.toList());
         return CollectionModel.of(emails);
@@ -83,32 +83,32 @@ public class PetRestController {
     // curl -s http://localhost:8080/api/messages/{messageID}
     // This *reads* from the database and is the "R" in CRUD
     @GetMapping("/api/messages/{messageID}")
-    public EntityModel<Message> getMessage(@PathVariable final Long messageID) {
-        final Message message = PetService.findMessage(messageID);
-        return EntityModel.of(message,
-                linkTo(methodOn(MessageRestController.class).getMessages()).withRel("LIST_ALL_MESSAGES"),
-                linkTo(methodOn(MessageRestController.class).getAllEmails()).withRel("LIST_ALL_EMAILS"),
-                linkTo(methodOn(MessageRestController.class).getMessage(messageID)).withSelfRel());
+    public EntityModel<Pet> getPet(@PathVariable final Long pet) {
+        final Pet pet = PetService.findMessage(petID);
+        return EntityModel.of(pet,
+                linkTo(methodOn(PetRestController.class).getMessages()).withRel("LIST_ALL_MESSAGES"),
+                linkTo(methodOn(PetRestController.class).getAllEmails()).withRel("LIST_ALL_EMAILS"),
+                linkTo(methodOn(PetRestController.class).getMessage(petID)).withSelfRel());
     }
 
     // Remove a student
     // curl -s -X DELETE http://localhost:8080/api/students/51
     // This *delete* a database record and is the "D" in CRUD
     @DeleteMapping("/api/messages/{messageID}")
-    public void deleteMessage(@PathVariable long messageID) {
-        messageService.deleteById(messageID);
+    public void deleteMessage(@PathVariable long petID) {
+        PetService.deleteById(petID);
     }
 
-    public Message writeToDatabase(final Message message) {
-        return this.messageRepo.save(message);
+    public Pet writeToDatabase(final Pet pet) {
+        return this.messageRepo.save(pet);
     }
 
     // Save a new message
     // This method handles the HTTP POST request to save a new message
     @PostMapping("/api/messages")
-    public ResponseEntity<Message> saveMessage(@RequestBody Message message) {
+    public ResponseEntity<Message> saveMessage(@RequestBody Pet pet) {
         // Call the writeToDatabase method to save the message to the database
-        Message savedMessage = writeToDatabase(message);
+        Message savedMessage = writeToDatabase(pet);
         return ResponseEntity.ok(savedMessage);
     }
 
