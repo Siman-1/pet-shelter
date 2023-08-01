@@ -30,12 +30,12 @@ public class PetRestController {
     public static final String LIST_ALL_TRAININGLEVELS= "listAllTrainingLevels";
     public static final String LIST_ALL_BREEDS= "listAllBreeds";
 
-    final private PetRepo messageRepo;
-    final private PetService messageService;
+    final private PetRepo petRepo;
+    final private PetService petService;
 
     public PetRestController(@Autowired PetService service, @Autowired PetRepo petRepo) {
-        this.PetService = service;
-        this.PetRepo = PetRepo;
+        this.petService = service;
+        this.petRepo = petRepo;
     }
 
     // Return all messages
@@ -43,18 +43,18 @@ public class PetRestController {
     // This *reads* from the database and is the "R" in CRUD
     @GetMapping("/api/messages")
     public CollectionModel<EntityModel<Message>> getMessages() {
-        List<EntityModel<Message>> messages = this.PetService.messageStream()
-                .map(message -> EntityModel.of(message))
+        List<EntityModel<Message>> pets = this.petService.petStream()
+                .map(pet -> EntityModel.of(pet))
                 .collect(Collectors.toList());
-        return CollectionModel.of(messages);
+        return CollectionModel.of(pets);
     }
 
-    // Return all names of messages
+    // Return all names of pets
     // curl -s http://localhost:8080/api/messages/names
     @GetMapping("/api/messages/names")
     public CollectionModel<String> getAllNames() {
-        List<String> names = this.PetService.messageStream()
-                .map(Message::getName)
+        List<String> names = this.petService.petStream()
+                .map(Pet::getName)
                 .collect(Collectors.toList());
         return CollectionModel.of(names);
     }
@@ -63,8 +63,8 @@ public class PetRestController {
     // curl -s http://localhost:8080/api/messages/emails
     @GetMapping("/api/messages/emails")
     public CollectionModel<String> getAllEmails() {
-        List<String> emails = this.PetService.petStream()
-                .map(Message::getEmail)
+        List<String> emails = this.petService.petStream()
+                .map(Pet::getEmail)
                 .collect(Collectors.toList());
         return CollectionModel.of(emails);
     }
@@ -73,7 +73,7 @@ public class PetRestController {
     // curl -s http://localhost:8080/api/messages/bodies
     @GetMapping("/api/messages/bodies")
     public CollectionModel<String> getAllMessageBodies() {
-        List<String> bodies = this.PetService.messageStream()
+        List<String> bodies = this.petService.petStream()
                 .map(Message::getMessageBody)
                 .collect(Collectors.toList());
         return CollectionModel.of(bodies);
@@ -82,7 +82,7 @@ public class PetRestController {
     // Return one message
     // curl -s http://localhost:8080/api/messages/{messageID}
     // This *reads* from the database and is the "R" in CRUD
-    @GetMapping("/api/messages/{messageID}")
+    @GetMapping("/api/messages/{petID}")
     public EntityModel<Pet> getPet(@PathVariable final Long pet) {
         final Pet pet = PetService.findMessage(petID);
         return EntityModel.of(pet,
@@ -94,13 +94,13 @@ public class PetRestController {
     // Remove a student
     // curl -s -X DELETE http://localhost:8080/api/students/51
     // This *delete* a database record and is the "D" in CRUD
-    @DeleteMapping("/api/messages/{messageID}")
+    @DeleteMapping("/api/messages/{petID}")
     public void deleteMessage(@PathVariable long petID) {
         PetService.deleteById(petID);
     }
 
     public Pet writeToDatabase(final Pet pet) {
-        return this.messageRepo.save(pet);
+        return this.petRepo.save(pet);
     }
 
     // Save a new message
@@ -108,7 +108,7 @@ public class PetRestController {
     @PostMapping("/api/messages")
     public ResponseEntity<Message> saveMessage(@RequestBody Pet pet) {
         // Call the writeToDatabase method to save the message to the database
-        Message savedMessage = writeToDatabase(pet);
+        Pet savedMessage = writeToDatabase(pet);
         return ResponseEntity.ok(savedMessage);
     }
 
