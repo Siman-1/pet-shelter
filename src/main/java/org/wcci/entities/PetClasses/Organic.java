@@ -1,4 +1,4 @@
-package org.wcci.PetClasses;
+package org.wcci.entities.PetClasses;
 
 public interface Organic {
 
