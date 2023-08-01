@@ -1,12 +1,13 @@
-package org.wcci.Spring.Services;
+package org.wcci.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.wcci.Spring.repositories.PetRepo;
+import org.wcci.entities.Pet;
+import org.wcci.repositories.PetRepo;
+
 import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-import org.wcci.Spring.entities.Pet;
 
 @Service
 public class PetService {

@@ -1,4 +1,4 @@
-package org.wcci.PetClasses;
+package org.wcci.entities.PetClasses;
 
 import java.util.HashMap;
 import java.util.Map;

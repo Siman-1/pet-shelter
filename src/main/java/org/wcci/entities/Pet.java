@@ -1,4 +1,4 @@
-package org.wcci.Spring.entities;
+package org.wcci.entities;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package org.wcci.Spring.restControllers;
+package org.wcci.restControllers;
 
 
 
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.wcci.Spring.repositories.PetRepo;
+import org.wcci.repositories.PetRepo;
 import org.wcci.services.PetService;
 
 @RestController
@@ -30,12 +30,12 @@ public class PetRestController {
     public static final String LIST_ALL_TRAININGLEVELS= "listAllTrainingLevels";
     public static final String LIST_ALL_BREEDS= "listAllBreeds";
 
-    final private PetRepo messageRepo;
-    final private PetService messageService;
+    final private PetRepo petRepo;
+    final private PetService petService;
 
     public PetRestController(@Autowired PetService service, @Autowired PetRepo petRepo) {
-        this.PetService = service;
-        this.PetRepo = PetRepo;
+        this.petService = service;
+        this.petRepo = petRepo;
     }
 
     // Return all messages
@@ -43,18 +43,18 @@ public class PetRestController {
     // This *reads* from the database and is the "R" in CRUD
     @GetMapping("/api/messages")
     public CollectionModel<EntityModel<Message>> getMessages() {
-        List<EntityModel<Message>> messages = this.PetService.messageStream()
-                .map(message -> EntityModel.of(message))
+        List<EntityModel<Message>> pets = this.petService.petStream()
+                .map(pet -> EntityModel.of(pet))
                 .collect(Collectors.toList());
-        return CollectionModel.of(messages);
+        return CollectionModel.of(pets);
     }
 
-    // Return all names of messages
+    // Return all names of pets
     // curl -s http://localhost:8080/api/messages/names
     @GetMapping("/api/messages/names")
     public CollectionModel<String> getAllNames() {
-        List<String> names = this.PetService.messageStream()
-                .map(Message::getName)
+        List<String> names = this.petService.petStream()
+                .map(Pet::getName)
                 .collect(Collectors.toList());
         return CollectionModel.of(names);
     }
@@ -63,8 +63,8 @@ public class PetRestController {
     // curl -s http://localhost:8080/api/messages/emails
     @GetMapping("/api/messages/emails")
     public CollectionModel<String> getAllEmails() {
-        List<String> emails = this.PetService.petStream()
-                .map(Message::getEmail)
+        List<String> emails = this.petService.petStream()
+                .map(Pet::getEmail)
                 .collect(Collectors.toList());
         return CollectionModel.of(emails);
     }
@@ -100,7 +100,7 @@ public class PetRestController {
     }
 
     public Pet writeToDatabase(final Pet pet) {
-        return this.messageRepo.save(pet);
+        return this.petRepo.save(pet);
     }
 
     // Save a new message
