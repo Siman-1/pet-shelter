@@ -73,7 +73,7 @@ public class PetRestController {
     // curl -s http://localhost:8080/api/messages/bodies
     @GetMapping("/api/messages/bodies")
     public CollectionModel<String> getAllMessageBodies() {
-        List<String> bodies = this.PetService.messageStream()
+        List<String> bodies = this.petService.petStream()
                 .map(Message::getMessageBody)
                 .collect(Collectors.toList());
         return CollectionModel.of(bodies);
@@ -82,7 +82,7 @@ public class PetRestController {
     // Return one message
     // curl -s http://localhost:8080/api/messages/{messageID}
     // This *reads* from the database and is the "R" in CRUD
-    @GetMapping("/api/messages/{messageID}")
+    @GetMapping("/api/messages/{petID}")
     public EntityModel<Pet> getPet(@PathVariable final Long pet) {
         final Pet pet = PetService.findMessage(petID);
         return EntityModel.of(pet,
@@ -94,7 +94,7 @@ public class PetRestController {
     // Remove a student
     // curl -s -X DELETE http://localhost:8080/api/students/51
     // This *delete* a database record and is the "D" in CRUD
-    @DeleteMapping("/api/messages/{messageID}")
+    @DeleteMapping("/api/messages/{petID}")
     public void deleteMessage(@PathVariable long petID) {
         PetService.deleteById(petID);
     }
@@ -108,7 +108,7 @@ public class PetRestController {
     @PostMapping("/api/messages")
     public ResponseEntity<Message> saveMessage(@RequestBody Pet pet) {
         // Call the writeToDatabase method to save the message to the database
-        Message savedMessage = writeToDatabase(pet);
+        Pet savedMessage = writeToDatabase(pet);
         return ResponseEntity.ok(savedMessage);
     }
 
