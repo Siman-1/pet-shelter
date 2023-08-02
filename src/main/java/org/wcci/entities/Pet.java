@@ -15,7 +15,11 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
-@Entity
+@Entity//creates the object of Pet that we are saving to database
+
+//Pet is the object we save and it has columns
+//each column in the database will have a name
+//each column needs a getter and setter 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pet {
     private String name;
