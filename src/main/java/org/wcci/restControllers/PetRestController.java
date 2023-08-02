@@ -40,9 +40,9 @@ public class PetRestController {
     }
 
     // Return all messages
-    // curl -s http://localhost:8080/api/messages
+    // curl -s http://localhost:8080/api/pets
     // This *reads* from the database and is the "R" in CRUD
-    @GetMapping("/api/messages")
+    @GetMapping("/api/pets")
     public CollectionModel<EntityModel<Pet>> getPets() {
         List<EntityModel<Pet>> pets = this.petService.petStream()
                 .map(pet -> EntityModel.of(pet))
@@ -117,4 +117,4 @@ public class PetRestController {
     //     return ResponseEntity.ok(savedMessage);
     // }
 
-}
+
