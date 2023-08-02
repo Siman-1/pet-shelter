@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+
 import "../css/styles.css";
+
+
+import "../css/style.css";
+import Shelter from "./Shelter";
 
 
 function Main() {
@@ -17,4 +22,8 @@ function Main() {
   );
 }
 
+
 createRoot(document.getElementById("react-mountpoint")).render(<Main />);
+
+createRoot(document.getElementById("react-mountpoint")).render(<Main />);
+
