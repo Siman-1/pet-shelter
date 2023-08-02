@@ -10,6 +10,10 @@ export default function Shelter() {
     return () => {};
   }, []);
 
-  return
-  <div> {JSON.stringify(pets)}</div>;
+  return (
+    <>
+      <div>{JSON.stringify(pets)}</div>
+    </>
+  );
 }
+
