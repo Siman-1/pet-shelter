@@ -54,56 +54,44 @@ public class PetRestController {
 
 
 
-    // // Return all names of pets
-    // // curl -s http://localhost:8080/api/messages/names
-    // @GetMapping("/api/messages/names")
-    // public CollectionModel<String> getAllNames() {
-    //     List<String> names = this.petService.petStream()
-    //             .map(Pet::getName)
-    //             .collect(Collectors.toList());
-    //     return CollectionModel.of(names);
-    // }
+    // Return all names of pets
+    // curl -s http://localhost:8080/api/messages/names
+    @GetMapping("/api/pets/names")
+    public CollectionModel<String> getAllNames() {
+        List<String> names = this.petService.petStream()
+                .map(Pet::getName)
+                .collect(Collectors.toList());
+        return CollectionModel.of(names);
+    }
 
-    // // Return all emails of messages
-    // // curl -s http://localhost:8080/api/messages/emails
-    // @GetMapping("/api/messages/emails")
-    // public CollectionModel<String> getAllEmails() {
-    //     List<String> emails = this.petService.petStream()
-    //             .map(Pet::getEmail)
-    //             .collect(Collectors.toList());
-    //     return CollectionModel.of(emails);
-    // }
+    // Return all emails of messages
+    // curl -s http://localhost:8080/api/messages/emails
+    @GetMapping("/api/pets/hunger")
+    public CollectionModel<String> getAllHunger() {
+        List<String> hungerLevels = this.petService.petStream()
+                .map(Pet::getHunger)
+                .collect(Collectors.toList());
+        return CollectionModel.of(hungerLevels);
+    }
 
-    // Return all message bodies
-    // curl -s http://localhost:8080/api/messages/bodies
-    // @GetMapping("/api/messages/bodies")
-    // public CollectionModel<String> getAllMessageBodies() {
-    //     List<String> bodies = this.petService.petStream()
-    //             .map(Pet::getMessageBody)
-    //             .collect(Collectors.toList());
-    //     return CollectionModel.of(bodies);
+    // Return one message
+    // curl -s http://localhost:8080/api/messages/{messageID}
+    // This *reads* from the database and is the "R" in CRUD
+    @GetMapping("/api/messages/{petID}")
+    public EntityModel<Pet> getPet(@PathVariable final Long petID) {
+        final Pet pet = this.petService.findPet(petID);
+        return EntityModel.of(pet,
+                linkTo(methodOn(PetRestController.class).getPets()).withRel("LIST_ALL_PETS"),
+                linkTo(methodOn(PetRestController.class).getPet(petID)).withSelfRel());
+    }
 
-
-
-    // // Return one message
-    // // curl -s http://localhost:8080/api/messages/{messageID}
-    // // This *reads* from the database and is the "R" in CRUD
-    // @GetMapping("/api/messages/{petID}")
-    // public EntityModel<Pet> getPet(@PathVariable final Long pet) {
-    //     final Pet pet = PetService.findMessage(petID);
-    //     return EntityModel.of(pet,
-    //             linkTo(methodOn(PetRestController.class).getPets()).withRel("LIST_ALL_MESSAGES"),
-    //             linkTo(methodOn(PetRestController.class).getNames()).withRel("LIST_ALL_EMAILS"),
-    //             linkTo(methodOn(PetRestController.class).getMessage(petID)).withSelfRel());
-    // }}
-
-    // // Remove a student
-    // // curl -s -X DELETE http://localhost:8080/api/students/51
-    // // This *delete* a database record and is the "D" in CRUD
-    // @DeleteMapping("/api/messages/{petID}")
-    // public void deleteMessage(@PathVariable long petID) {
-    //     PetService.deleteById(petID);
-    // }
+    // Remove a student
+    // curl -s -X DELETE http://localhost:8080/api/students/51
+    // This *delete* a database record and is the "D" in CRUD
+    @DeleteMapping("/api/pets/{petID}")
+    public void deleteMessage(@PathVariable long petID) {
+        this.petService.deleteById(petID);
+    }
 
     public Pet writeToDatabase(final Pet pet) {
         return this.petRepo.save(pet);
