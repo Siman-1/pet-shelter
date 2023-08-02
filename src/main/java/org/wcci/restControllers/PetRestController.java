@@ -77,7 +77,7 @@ public class PetRestController {
     // Return one message
     // curl -s http://localhost:8080/api/messages/{messageID}
     // This *reads* from the database and is the "R" in CRUD
-    @GetMapping("/api/messages/{petID}")
+    @GetMapping("/api/pets/{petID}")
     public EntityModel<Pet> getPet(@PathVariable final Long petID) {
         final Pet pet = this.petService.findPet(petID);
         return EntityModel.of(pet,
