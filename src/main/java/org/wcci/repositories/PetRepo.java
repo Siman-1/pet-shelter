@@ -9,5 +9,6 @@ import org.wcci.entities.Pet;
 // Keys are typically either Long or String (They are usually "Long" if you let the database make them automatically, and String if you're using some predefined key, like SSN)
 /** I know how to read and write Student objects to a database */
 public interface PetRepo extends CrudRepository<Pet, Long> {
-    
+    //list of all the pets
+    //allows us to use CREATE READ UPDATE DELETE
 }

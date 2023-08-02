@@ -82,7 +82,8 @@ public class PetRestController {
     //             .map(Pet::getMessageBody)
     //             .collect(Collectors.toList());
     //     return CollectionModel.of(bodies);
-   // }
+
+
 
     // // Return one message
     // // curl -s http://localhost:8080/api/messages/{messageID}
@@ -115,6 +116,8 @@ public class PetRestController {
         // Call the writeToDatabase method to save the message to the database
         Pet savedPet = writeToDatabase(pet);
         return ResponseEntity.ok(savedPet);
-    }}
+    }
 
+
+}
 
