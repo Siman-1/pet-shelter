@@ -12,6 +12,9 @@ nav {
     justify-content: center;
     align-items: center;
     background-color: grey;
-    color: white;
+    color: black;
     flex-direction: column;
+}
+.infoEntry .left input{
+  background-color: white;
 }
