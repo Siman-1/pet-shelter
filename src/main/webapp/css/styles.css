@@ -1,0 +1,17 @@
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: green;
+  } 
+
+  *{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: white;
+    flex-direction: column;
+}
