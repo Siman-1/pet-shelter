@@ -111,7 +111,8 @@ public class PetRestController {
 
     // Save a new message
     // This method handles the HTTP POST request to save a new message
-    @PostMapping("/api/pets")
+    // curl -s -X ADD http://localhost:8080/api/savepet
+    @PostMapping("/api/savepet")
     public ResponseEntity<Pet> savePet(@RequestBody Pet pet) {
         // Call the writeToDatabase method to save the message to the database
         Pet savedPet = writeToDatabase(pet);
