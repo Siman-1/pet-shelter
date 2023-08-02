@@ -82,7 +82,7 @@ public class PetRestController {
     //             .map(Pet::getMessageBody)
     //             .collect(Collectors.toList());
     //     return CollectionModel.of(bodies);
-    }
+   // }
 
     // // Return one message
     // // curl -s http://localhost:8080/api/messages/{messageID}
@@ -91,10 +91,10 @@ public class PetRestController {
     // public EntityModel<Pet> getPet(@PathVariable final Long pet) {
     //     final Pet pet = PetService.findMessage(petID);
     //     return EntityModel.of(pet,
-    //             linkTo(methodOn(PetRestController.class).getMessages()).withRel("LIST_ALL_MESSAGES"),
-    //             linkTo(methodOn(PetRestController.class).getAllEmails()).withRel("LIST_ALL_EMAILS"),
+    //             linkTo(methodOn(PetRestController.class).getPets()).withRel("LIST_ALL_MESSAGES"),
+    //             linkTo(methodOn(PetRestController.class).getNames()).withRel("LIST_ALL_EMAILS"),
     //             linkTo(methodOn(PetRestController.class).getMessage(petID)).withSelfRel());
-    // }
+    // }}
 
     // // Remove a student
     // // curl -s -X DELETE http://localhost:8080/api/students/51
@@ -104,17 +104,17 @@ public class PetRestController {
     //     PetService.deleteById(petID);
     // }
 
-    // public Pet writeToDatabase(final Pet pet) {
-    //     return this.petRepo.save(pet);
-    // }
+    public Pet writeToDatabase(final Pet pet) {
+        return this.petRepo.save(pet);
+    }
 
-    // // Save a new message
-    // // This method handles the HTTP POST request to save a new message
-    // @PostMapping("/api/messages")
-    // public ResponseEntity<Message> saveMessage(@RequestBody Pet pet) {
-    //     // Call the writeToDatabase method to save the message to the database
-    //     Pet savedMessage = writeToDatabase(pet);
-    //     return ResponseEntity.ok(savedMessage);
-    // }
+    // Save a new message
+    // This method handles the HTTP POST request to save a new message
+    @PostMapping("/api/pets")
+    public ResponseEntity<Pet> savePet(@RequestBody Pet pet) {
+        // Call the writeToDatabase method to save the message to the database
+        Pet savedPet = writeToDatabase(pet);
+        return ResponseEntity.ok(savedPet);
+    }}
 
 
