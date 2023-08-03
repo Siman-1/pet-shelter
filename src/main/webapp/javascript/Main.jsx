@@ -5,26 +5,28 @@ import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 import "../css/styles.css";
 
 import Shelter from "./Shelter";
+import Activities from "./Activities";
 
 function Layout() {
-    return (
-      <>
-        <nav>
-          <Link to="/">Main</Link>
-        </nav>
-  
-        <Outlet />
-      </>
-    );
-  }
+  return (
+    <>
+      <nav>
+        <Link to="/">Main</Link>
+        <Link to="./Shelter">Shelter</Link>
+      </nav>
+
+      <Outlet />
+    </>
+  );
+}
 
 function Main() {
   return (
     <React.StrictMode>
-      <Shelter />
+    <Shelter />
       <BrowserRouter>
         <Routes>
-          <Route path="/app1?/src?/main?/resources?/static?/index.html?" element={<Layout />}></Route>
+          <Route path = "Shelter" element={<Shelter />}></Route>
           <Route index element={<Layout />}></Route>
         </Routes>
       </BrowserRouter>
