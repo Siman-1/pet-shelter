@@ -55,7 +55,7 @@ public class PetRestController {
 
 
     // Return all names of pets
-    // curl -s http://localhost:8080/api/messages/names
+    // curl -s http://localhost:8080/api/pets/names
     @GetMapping("/api/pets/names")
     public CollectionModel<String> getAllNames() {
         List<String> names = this.petService.petStream()
@@ -64,8 +64,8 @@ public class PetRestController {
         return CollectionModel.of(names);
     }
 
-    // Return all emails of messages
-    // curl -s http://localhost:8080/api/messages/emails
+    // Return all hunger of pets
+    // curl -s http://localhost:8080/api/pets/hunger
     @GetMapping("/api/pets/hunger")
     public CollectionModel<String> getAllHunger() {
         List<String> hungerLevels = this.petService.petStream()
@@ -74,8 +74,8 @@ public class PetRestController {
         return CollectionModel.of(hungerLevels);
     }
 
-    // Return one message
-    // curl -s http://localhost:8080/api/messages/{messageID}
+    // Return one pet
+    // curl -s http://localhost:8080/api/pets/{petID}
     // This *reads* from the database and is the "R" in CRUD
     @GetMapping("/api/pets/{petID}")
     public EntityModel<Pet> getPet(@PathVariable final Long petID) {
@@ -86,10 +86,10 @@ public class PetRestController {
     }
 
     // Remove a student
-    // curl -s -X DELETE http://localhost:8080/api/students/51
+    // curl -s -X DELETE http://localhost:8080/api/pets/{petID}
     // This *delete* a database record and is the "D" in CRUD
     @DeleteMapping("/api/pets/{petID}")
-    public void deleteMessage(@PathVariable long petID) {
+    public void deletePet(@PathVariable long petID) {
         this.petService.deleteById(petID);
     }
 
@@ -99,7 +99,8 @@ public class PetRestController {
 
     // Save a new message
     // This method handles the HTTP POST request to save a new message
-    @PostMapping("/api/pets")
+    // curl -s -X ADD http://localhost:8080/api/savepet
+    @PostMapping("/api/savepet")
     public ResponseEntity<Pet> savePet(@RequestBody Pet pet) {
         // Call the writeToDatabase method to save the message to the database
         Pet savedPet = writeToDatabase(pet);
