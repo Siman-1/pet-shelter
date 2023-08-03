@@ -37,17 +37,13 @@ export default function Shelter() {
   useEffect(() => {
     fetch("/api/pets", { method: "GET", cache: "default" })
       .then((response) => response.json())
-      .then((responseBody) => setPets(responseBody));
+      .then((responseBody) => setPets(responseBody?._embedded?.petList));
     return () => {};
   }, []);
 
   return (
     <>
-      <ul>
-        {pets.map((pet) => (
-          <Pet key={pet.id} pet={pet} />
-        ))}
-      </ul>
+      <ul>{pets && pets.map((pet) => <Pet key={pet.id} pet={pet} />)}</ul>
       <form onSubmit={handleSubmit}>
         <div className="infoEntry">
           <div className="left">

@@ -7,9 +7,9 @@ export default function Pet({ pet }) {
   };
 
   return (
-    <div>
+    <li>
       <div>{pet.name}</div>
       <button onClick={() => removePet(pet.id)}>Delete</button>
-    </div>
+    </li>
   );
 }
