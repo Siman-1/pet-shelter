@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Pet from "./Pet";
 export default function Shelter() {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
@@ -42,7 +43,7 @@ export default function Shelter() {
 
   return (
     <>
-      <div>{JSON.stringify(pets)}</div>
+      {pets.map(pet => <Pet pet = {pet}/>)}
       <form onSubmit={handleSubmit}>
         <div className="infoEntry">
           <div className="left">
