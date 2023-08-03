@@ -4,33 +4,28 @@ import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 
 
 import Shelter from "./Shelter";
+import Activities from "./Activities";
 
 function Layout() {
-    return (
-      <>
-        <nav>
-          <Link to="/">Main</Link>
-        </nav>
-  
-        <Outlet />
-      </>
-    );
-  }
+  return (
+    <>
+      <nav>
+        <Link to="/">Main</Link>
+        <Link to="./Shelter">Shelter</Link>
+      </nav>
+
+      <Outlet />
+    </>
+  );
+}
 
 function Main() {
   return (
     <React.StrictMode>
-     {/* <div class="pet-container">
-      <div class="cat"></div>
-      <div class="doghouse"></div>
-      <div class="dog"></div>
-    </div>
-      
-    <div class="grass"></div> */}
+    <Shelter />
       <BrowserRouter>
         <Routes>
-        <Shelter/>
-          <Route path="/app1?/src?/main?/resources?/static?/index.html?" element={<Layout />}></Route>
+          <Route path = "Shelter" element={<Shelter />}></Route>
           <Route index element={<Layout />}></Route>
         </Routes>
       </BrowserRouter>
