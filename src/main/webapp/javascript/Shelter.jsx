@@ -42,7 +42,7 @@ export default function Shelter() {
   }, []);
 
   return (
-    <>
+    <div className="doghouse">
       <ul>{pets && pets.map((pet) => <Pet key={pet.id} pet={pet} />)}</ul>
       <form onSubmit={handleSubmit}>
         <div className="infoEntry">
@@ -77,6 +77,13 @@ export default function Shelter() {
         </div>
         <button type="submit">CREATE PET</button>
       </form>
-    </>
+      <div class="pet-container">
+      <div class="cat"></div>
+      <div class="doghouse"></div>
+      <div class="dog"></div>
+    </div>
+
+    <div class="grass"></div>
+    </div>
   );
 }

@@ -6,12 +6,14 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.wcci.entities.Pet;
 import org.wcci.repositories.PetRepo;
 import org.wcci.services.PetService;
@@ -31,12 +34,10 @@ public class PetRestController {
     public static final String LIST_ALL_TRAININGLEVELS= "listAllTrainingLevels";
     public static final String LIST_ALL_BREEDS= "listAllBreeds";
 
-    final private PetRepo petRepo;
     final private PetService petService;
 
-    public PetRestController(@Autowired PetService service, @Autowired PetRepo petRepo) {
+    public PetRestController(@Autowired PetService service) {
         this.petService = service;
-        this.petRepo = petRepo;
     }
 
     // Return all messages
@@ -79,8 +80,10 @@ public class PetRestController {
     // This *reads* from the database and is the "R" in CRUD
     @GetMapping("/api/pets/{petID}")
     public EntityModel<Pet> getPet(@PathVariable final Long petID) {
-        final Pet pet = this.petService.findPet(petID);
-        return EntityModel.of(pet,
+        final Optional<Pet> pet = this.petService.findPet(petID);
+        if (!pet.isPresent()) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        return EntityModel.of(pet.get(),
                 linkTo(methodOn(PetRestController.class).getPets()).withRel("LIST_ALL_PETS"),
                 linkTo(methodOn(PetRestController.class).getPet(petID)).withSelfRel());
     }
@@ -93,17 +96,13 @@ public class PetRestController {
         this.petService.deleteById(petID);
     }
 
-    public Pet writeToDatabase(final Pet pet) {
-        return this.petRepo.save(pet);
-    }
-
     // Save a new message
     // This method handles the HTTP POST request to save a new message
     // curl -s -X ADD http://localhost:8080/api/savepet
     @PostMapping("/api/savepet")
     public ResponseEntity<Pet> savePet(@RequestBody Pet pet) {
         // Call the writeToDatabase method to save the message to the database
-        Pet savedPet = writeToDatabase(pet);
+        Pet savedPet = this.petService.writeToDatabase(pet);
         return ResponseEntity.ok(savedPet);
     }
 
