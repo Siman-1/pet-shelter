@@ -43,18 +43,15 @@ export default function Shelter() {
 
   return (
     <>
-      {pets.map(pet => <Pet pet = {pet}/>)}
+      <ul>
+        {pets.map((pet) => (
+          <Pet key={pet.id} pet={pet} />
+        ))}
+      </ul>
       <form onSubmit={handleSubmit}>
         <div className="infoEntry">
           <div className="left">
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              name="name"
-              id="name"
-              type="text"
-              placeholder="Enter your name..."
-            ></input>
+            <input value={name} onChange={(e) => setName(e.target.value)} name="name" id="name" type="text" placeholder="Enter your name..."></input>
             <input
               value={hunger}
               onChange={(e) => setHunger(e.target.value)}
@@ -79,14 +76,7 @@ export default function Shelter() {
               type="number"
               placeholder="Enter train level.."
             ></input>
-            <input
-              value={breed}
-              onChange={(e) => setBreed(e.target.value)}
-              name="breed"
-              id="breed"
-              type="text"
-              placeholder="Enter breed type.."
-            ></input>
+            <input value={breed} onChange={(e) => setBreed(e.target.value)} name="breed" id="breed" type="text" placeholder="Enter breed type.."></input>
           </div>
         </div>
         <button type="submit">CREATE PET</button>
