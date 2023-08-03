@@ -1,6 +1,7 @@
 package org.wcci.services;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -24,8 +25,8 @@ public class PetService {
         return StreamSupport.stream(pets.spliterator(), false);
     }
 
-    public Pet findPet(Long petID) {
-        return null;
+    public Optional<Pet> findPet(Long petID) {
+        return petRepo.findById(petID);
     }
 
     public void deleteById(Long petID) {
@@ -37,5 +38,9 @@ public class PetService {
             // not found
             throw new NoSuchElementException("Pet with ID " + petID + " not found");
         }
+    }
+
+    public Pet writeToDatabase(Pet pet) {
+        return petRepo.save(pet);
     }
 }
