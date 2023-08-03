@@ -22,7 +22,6 @@ function Layout() {
 function Main() {
   return (
     <React.StrictMode>
-    <Shelter />
       <BrowserRouter>
         <Routes>
           <Route path = "Shelter" element={<Shelter />}></Route>
