@@ -1,3 +1,50 @@
 .container{
     background-color:rgb(182, 181, 181) ;
 }
+
+.doghouse{
+    background-image: url("../../webapp/images/—Pngtree—a\ lovely\ yellow\ kennel_4287032.png");
+    width: 350px; height: 350px;
+    background-size: contain;
+    margin: 0; padding: 0;
+    display: inline-block;
+    /* float: right; */
+}
+
+
+.grass{
+    background-image: url("../../webapp/images/fields-grass-clipart-12.jpg");
+    width: 100%; height: 170px;
+    background-size: contain;
+    position: absolute;
+    top: 90%;
+}
+
+
+.dog{
+    background-image: url("../../webapp/images/dog-clipart-medium.png");
+    width: 100px; height: 100px;
+    background-size: contain; margin: 0; padding: 0;
+    display: inline-block;
+
+    /* float: left;    */
+}
+.cat{
+    background-image: url("../../webapp/images/Cat.png");
+    width: 100px; height: 100px;
+    background-size: contain;
+    display: inline-block;
+    margin: 0; padding: 0;
+
+    /* float:left;    */
+}
+
+.pet-container{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* display: inline-block; */
+    float: right;
+}
+
+
+
