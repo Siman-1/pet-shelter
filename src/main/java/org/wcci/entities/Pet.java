@@ -75,5 +75,5 @@ public class Pet {
 
     @Id
     @GeneratedValue
-    public Long messageID;
+    public Long petID;
 }
