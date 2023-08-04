@@ -1,77 +1,188 @@
-.container{
-    background-color:rgb(182, 181, 181) ;
-}
-
-.doghouse{
-    background-image: url("/images/—Pngtree—a\ lovely\ yellow\ kennel_4287032.png");
-    width: 200px; height: 200px;
-    background-size: contain;
-    margin: 0; padding: 0;
-    display: inline-block;
-    /* float: right; */
-}
-
-
-.grass{
-    background-image: url("/images/fields-grass-clipart-12.jpg");
-    width: fit-content; height: 170px;
-    background-size: contain;
-    position: absolute;
-    top: 90%;
-}
-
-
-.dog{
-    background-image: url("/images/dog-clipart-medium.png");
-    width: 100px; height: 100px;
-    background-size: contain; margin: 0; padding: 0;
-    display: inline-block;
-
-    /* float: left;    */
-}
-.cat{
-    background-image: url("/images/Cat.png");
-    width: 100px; height: 100px;
-    background-size: contain;
-    display: inline-block;
-    margin: 0; padding: 0;
-
-    /* float:left;    */
-}
-
-.pet-container{
-    display: flex; 
-    justify-content: space-between;
-    display: inline-block;
-    float: right;
-}
-
 
 nav {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: green;
-  } 
+  display: flex;
+  justify-content: space-evenly;
+  background-color: green;
+} 
 
-  *{
+
+
+
+* {
+    box-sizing: border-box;
     margin: 0;
-    border: 0;
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    background-image: url(grass-g074f729a3_1280.jpg);
+    background-size: cover;
+    
+}
+
+.background .right {
+    
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: grey;
-    color: black;
-    flex-direction: column;
-}
-.infoEntry .left input{
-  background-color: white;
+    
+
 }
 
 h1{
   display: flex;
   align-items: center;
   padding-top: 2%;
+}
+
+.background .right .kennels {
+    margin-top: 40px;
+    height: 25%;
+    width: 25%;
+    background-image: url(animal-gb3768dd50_1280.png);
+    background-size: cover;
+    
+}
+
+.background .right .sandbox {
+    
+    width: 80%;
+    height: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-image: url(sand.jpg);
+    background-size: cover;
+    border: solid black 20px;
+
+}
+
+.dog {
+    height: 25%;
+    width: 20%;
+    background-image: url(pngwing.com.png);
+    background-size: cover;
+    margin: 5px;
+}
+
+.cat {
+    height: 30%;
+    width: 20%;
+    background-image: url(cat.png);
+    background-size: cover;
+    margin: 5px;
+}
+
+.infoEntry {
+    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left {
+    
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.actions {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    border: solid black 5px;
+    width: 50%;
+    height: 75%;
+    margin-right: 10px;
+}
+
+.row {
+    border: 5px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: beige;
+    text-align: center;
+    font-family: fantasy;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .energy {
+    width: 60%;
+    height: 10%;
+    background-color: red;
+    margin-top: 15px;
+    font-family: fantasy;
+    font-size: 25px;
+    text-align: center;
+
+  }
+
+.backgroundForm {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-image: url(dogbg.jpg);
+    background-size: cover;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.infoEntry input{
+    background-color: white;
+    height: 100px;
+    width: 450px;
+    font-family: cursive;
+    font-size: 30px;
+    text-align: center;
+
+}
+
+.bg {
+    margin: 0 auto;
+    height: 100px;
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.bg h3 {
+    font-family: fantasy;
+    color: pink;
+    font-size: 35px;
+    text-align: center;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+}
+
+.infoEntry button {
+    height: 40px;
+    width: 200px;
+    font-family: fantasy;
+    background-color: pink;
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 15px;
+
 }
 
 h3{
@@ -113,3 +224,4 @@ p{
   width: 250px;
   cursor: pointer;
 }
+

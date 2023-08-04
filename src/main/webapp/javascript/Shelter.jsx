@@ -1,37 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Pet from "./Pet";
+import Main from "./Main";
+import Adopt from "./AdoptPet";
+import { Link } from 'react-router-dom'; 
+
+
 export default function Shelter() {
-  const [name, setName] = useState("");
-  const [breed, setBreed] = useState("");
-  const [hunger, setHunger] = useState("");
-  const [thirstLevel, setThirstLevel] = useState("");
-  const [trainingLevel, setTraininglevel] = useState("");
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const petData = {
-      name: name,
-      hunger: hunger,
-      thirstLevel: thirstLevel,
-      trainingLevel: trainingLevel,
-      breed: breed,
-    };
-    try {
-      const response = await fetch("/api/savepet", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(petData),
-      });
-      if (response.ok) {
-        console.log("Saved");
-      } else {
-        console.log("Error saving pet");
-      }
-    } catch (error) {
-      console.error("Error saving pet", error);
-    }
-  };
+
+
+
   const [pets, setPets] = useState([]);
 
   useEffect(() => {
@@ -42,48 +19,36 @@ export default function Shelter() {
   }, []);
 
   return (
-    <div className="doghouse">
-      <ul>{pets && pets.map((pet) => <Pet key={pet.id} pet={pet} />)}</ul>
-      <form onSubmit={handleSubmit}>
-        <div className="infoEntry">
-          <div className="left">
-            <input value={name} onChange={(e) => setName(e.target.value)} name="name" id="name" type="text" placeholder="Enter your name..."></input>
-            <input
-              value={hunger}
-              onChange={(e) => setHunger(e.target.value)}
-              name="hunger"
-              id="hunger"
-              type="number"
-              placeholder="Enter hunger level.."
-            ></input>
-            <input
-              value={thirstLevel}
-              onChange={(e) => setThirstLevel(e.target.value)}
-              name="thirst"
-              id="thirstlevel"
-              type="number"
-              placeholder="Enter thirst level.."
-            ></input>
-            <input
-              value={trainingLevel}
-              onChange={(e) => setTraininglevel(e.target.value)}
-              name="trainlevel"
-              id="trainlevel"
-              type="number"
-              placeholder="Enter train level.."
-            ></input>
-            <input value={breed} onChange={(e) => setBreed(e.target.value)} name="breed" id="breed" type="text" placeholder="Enter breed type.."></input>
-          </div>
-        </div>
-        <button type="submit">CREATE PET</button>
-      </form>
-      <div class="pet-container">
-      <div class="cat"></div>
-      <div class="doghouse"></div>
-      <div class="dog"></div>
-    </div>
+    
+      <><ul>{pets && pets.map((pet) => <Pet key={pet.id} pet={pet} />)}</ul><div className="background">
 
-    <div class="grass"></div>
-    </div>
-  );
+      <div className="right">
+        <div className="kennels"></div>
+        <div className="sandbox">
+          <div className="dog"></div>
+          <div className="cat"></div>
+        </div>
+      </div>
+      <div className="left">
+        <div className="actions">
+          <div className="row">WATER</div>
+          <div className="row">FEED</div>
+          <div className="row">TRAIN</div>
+          <Link to="/adopt" className="row">ADOPT PET</Link>
+          <div className="row">RELEASE PET</div>
+        </div>
+
+        <div className="energy">ENERGY LEVEL</div>
+      </div>
+
+    </div></>
+  )
+
 }
+
+
+
+
+      
+      
+

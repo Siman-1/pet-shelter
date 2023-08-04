@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import Adopt from "./AdoptPet";
 
 import Shelter from "./Shelter";
 import Activities from "./Activities";
+
+
+
 
 function Layout() {
   return (
@@ -44,7 +48,8 @@ function Main() {
     <React.StrictMode>
       <BrowserRouter>
         <Routes>
-          <Route path="Shelter" element={<Shelter />}></Route>
+          <Route path='/adopt' Component={Adopt}></Route>
+          <Route path = "Shelter" element={<Shelter />}></Route>
           <Route index element={<Layout />}></Route>
         </Routes>
       </BrowserRouter>

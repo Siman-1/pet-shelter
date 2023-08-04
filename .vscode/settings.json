@@ -12,5 +12,6 @@
         "thirstlevel",
         "traininglevel",
         "trainlevel"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
