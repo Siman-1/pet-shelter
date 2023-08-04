@@ -5,6 +5,7 @@
         "Addpet",
         "blahblah",
         "infoentry",
+        "kmss",
         "Mackeon",
         "Mckeon",
         "mountpoint",
@@ -14,5 +15,5 @@
         "traininglevel",
         "trainlevel"
     ],
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5502
 }

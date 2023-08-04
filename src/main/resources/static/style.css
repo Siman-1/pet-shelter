@@ -40,6 +40,7 @@ nav {
 h1{
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-top: 2%;
 }
 
@@ -187,12 +188,13 @@ h1{
 
 h3{
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  top: 80%;
 }
 
 p{
   display: flex;
-  justify-content: center;
+  align-items: first baseline;
 }
 
 .animalShelter {
@@ -203,25 +205,25 @@ p{
   display: flex; 
   position: absolute;
   left: 33%; 
-  top: 30%; 
-}
-.Kai{
-  width: 250px;
-  cursor: pointer;
+  top: 20%; 
 }
 
-.Stephen{
-  width: 250px;
+.kmss{
   cursor: pointer;
+  display: inline-block;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px; 
 }
 
-.Mckeon{
-  width: 250px;
-  cursor: pointer;
+.imageContainer{
+  position: absolute;
+  top: 500px;
+  left: 400px;
+  justify-content: center;
+  align-content: space-between;
+  flex-direction: row;
+  display: inline-block;
+  padding: 10px;
+  top: 85%;
 }
-
-.Siman{
-  width: 250px;
-  cursor: pointer;
-}
-
