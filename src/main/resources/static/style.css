@@ -37,6 +37,11 @@ nav {
 
 }
 
+h1{
+  display: flex;
+  align-items: center;
+  padding-top: 2%;
+}
 
 .background .right .kennels {
     margin-top: 40px;
@@ -180,7 +185,43 @@ nav {
 
 }
 
+h3{
+  display: flex;
+  justify-content: center;
+}
 
+p{
+  display: flex;
+  justify-content: center;
+}
 
+.animalShelter {
+  background-image:url("/images/homeless-dogs-in-shelter-cages-3697268-3105786.png");
+  width: 545px;
+  height: 450px;
+  background-size: contain;
+  display: flex; 
+  position: absolute;
+  left: 33%; 
+  top: 30%; 
+}
+.Kai{
+  width: 250px;
+  cursor: pointer;
+}
 
+.Stephen{
+  width: 250px;
+  cursor: pointer;
+}
+
+.Mckeon{
+  width: 250px;
+  cursor: pointer;
+}
+
+.Siman{
+  width: 250px;
+  cursor: pointer;
+}
 
