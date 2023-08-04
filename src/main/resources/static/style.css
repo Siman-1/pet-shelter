@@ -4,7 +4,7 @@
 
 .doghouse{
     background-image: url("/images/—Pngtree—a\ lovely\ yellow\ kennel_4287032.png");
-    width: 350px; height: 350px;
+    width: 200px; height: 200px;
     background-size: contain;
     margin: 0; padding: 0;
     display: inline-block;
@@ -14,7 +14,7 @@
 
 .grass{
     background-image: url("/images/fields-grass-clipart-12.jpg");
-    width: 100%; height: 170px;
+    width: fit-content; height: 170px;
     background-size: contain;
     position: absolute;
     top: 90%;
@@ -40,9 +40,9 @@
 }
 
 .pet-container{
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* display: inline-block; */
+    display: flex; 
+    justify-content: space-between;
+    display: inline-block;
     float: right;
 }
 
@@ -68,28 +68,48 @@ nav {
   background-color: white;
 }
 
-
-nav {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: green;
-  } 
-
-  *{
-    margin: 0;
-    border: 0;
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
-    color: black;
-    flex-direction: column;
-}
-.infoEntry .left input{
-  background-color: white;
+h1{
+  display: flex;
+  align-items: center;
+  padding-top: 2%;
 }
 
+h3{
+  display: flex;
+  justify-content: center;
+}
 
+p{
+  display: flex;
+  justify-content: center;
+}
 
+.animalShelter {
+  background-image:url("/images/homeless-dogs-in-shelter-cages-3697268-3105786.png");
+  width: 545px;
+  height: 450px;
+  background-size: contain;
+  display: flex; 
+  position: absolute;
+  left: 33%; 
+  top: 30%; 
+}
+.Kai{
+  width: 250px;
+  cursor: pointer;
+}
 
+.Stephen{
+  width: 250px;
+  cursor: pointer;
+}
+
+.Mckeon{
+  width: 250px;
+  cursor: pointer;
+}
+
+.Siman{
+  width: 250px;
+  cursor: pointer;
+}
